@@ -1,0 +1,6 @@
+rm test.out
+./getcz >> test.out
+./getde >> test.out
+./getes >> test.out
+./getfr >> test.out
+

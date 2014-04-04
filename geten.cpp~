@@ -1,0 +1,55 @@
+#include <cstdio>
+#include <cstring>
+
+const int n = 170;
+
+FILE *fin;
+int a[50];
+char dic[7000][40];
+
+int main() {
+	freopen("nctest2007.en", "r", stdin);
+	fin = fopen("dictout.txt", "r");
+
+	for (int i = 1; i <= 6714; ++i)
+		fscanf(fin, "%s\n", &dic[i]);
+	fclose(fin);
+
+	int cla = -1;
+	int count = 0;
+	int unk = 0;
+	int upper = 0;
+
+	for (int i = 1; i <= n;) {
+		char s[30] = "", c;
+		scanf("%s%c", &s, &c);
+
+		for (int j = 0; j < strlen(s); ++j)
+			if ('A' <= s[j] && s[j] <= 'Z') {
+				s[j] += 'a' - 'A';
+				++upper;
+			}
+
+		a[count] = 0;
+		for (int j = 1; j <= 6714; ++j)
+			if (strcmp(s, dic[j]) == 0) {
+				a[count] = 1;
+				++unk;
+				break;
+			}
+
+		if (c != '\r' && c != '\n')
+			++ count;
+		else {
+			printf("%d 1:%d 2:%d 3:%d", cla, count, unk, upper);
+			for (int j = 1; j <= count; ++j)
+				printf(" %d:%d", j+2, a[j]);
+			printf("\n");
+			count = 0;
+			unk = 0;
+			upper = 0;
+			++i;
+		}
+	}
+	return 0;
+}

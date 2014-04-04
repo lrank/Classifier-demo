@@ -1,0 +1,5 @@
+./partwords < nctest2007cz.txt > nctest2007cz.output.txt
+./partwords < nctest2007de.txt > nctest2007de.output.txt
+./partwords < nctest2007es.txt > nctest2007es.output.txt
+./partwords < nctest2007fr.txt > nctest2007fr.output.txt
+

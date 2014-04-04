@@ -1,0 +1,24 @@
+#include <cstdio>
+#include <cstring>
+
+const int n = 170;
+
+int main() {
+	freopen("nctest2007cz.output.txt", "r", stdin);
+	freopen("a.out", "w", stdout);
+
+	int cla = -1;
+	int count = 0;
+	for (int i = 1; i <= n;) {
+		char s[30] = "", c;
+		scanf("%s%c", &s, &c);
+		if (c != '\r')
+			++ count;
+		else {
+			printf("%d 1:%d\n", cla, count);
+			count = 0;
+			++i;
+		}
+	}
+	return 0;
+}
